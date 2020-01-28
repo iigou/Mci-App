@@ -1,0 +1,14 @@
+.user-card {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.user-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
