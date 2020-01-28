@@ -1,0 +1,15 @@
+.game-list{
+  width: 500px;
+  margin: 50px auto;
+}
+
+.game-card:hover {
+  color: #fff;
+  background-color: #3f51b5;
+  cursor: pointer;
+}
+
+.material-icons.big{
+  font-size: 100px;
+}
+

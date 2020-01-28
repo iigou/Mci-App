@@ -1,0 +1,13 @@
+<mat-card class="user-card">
+  <mat-card-title>New User</mat-card-title>
+  <mat-card-content>
+    <form class="user-form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="User name" name="userName" [(ngModel)]='userName'>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-button (click)="saveUser()">Save</a>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,13 @@
+<mat-grid-list cols="2" rowHeight="60px" class="game-list" *ngIf="(games$ | async); else loading">
+  <mat-grid-tile  *ngFor="let game of (games$ | async)" (click)="navigateTo(game)">
+    <mat-card class="game-card">
+      <mat-card-title>{{game}}</mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #loading>
+  <div class="overlay">
+    <mat-spinner class="center-spinner"></mat-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,10 @@
+.antonym-card {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.antonym-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}

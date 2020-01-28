@@ -1,0 +1,8 @@
+<mat-toolbar color="secondary" *ngIf="(gameTitle$ | async)">
+  <span>{{(gameTitle$ | async).title}}</span>
+  <span class="filler"></span>
+  <button *ngFor="let titleAction of (gameTitle$ | async).titleActions" mat-button (click)="titleAction.action()">
+    <i class="material-icons">{{titleAction.matIcon}}</i>
+  </button>
+  <button mat-button (click)="goToHome()"><i class="material-icons">home</i></button>
+</mat-toolbar>

@@ -1,0 +1,20 @@
+<mat-card *ngIf="(game$ | async) as instance;">
+  <mat-card-title class="instance-title" [ngClass]="{'green': instance.data.solved}"> Which one is the antonym of <strong>{{instance.data.word}}</strong> ?</mat-card-title>
+  <div class="container">
+    <mat-list>
+      <mat-list-item *ngFor="let choice of instance.data.choices" matRipple [matRippleCentered]="true" (click)="answer(instance.data.game.id, choice)"> 
+        <span>{{choice}}</span>
+        <span class="filler"></span>
+        <i class="material-icons icon-green" *ngIf="instance.data.solved">check_circle_outline</i>
+        <i class="material-icons icon-red" *ngIf="instance.data.solved && instance.data.solved === false">close</i>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="goToNext(instance.data.game.difficulty)" *ngIf="instance.data.solved">Next</button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="overlay" *ngIf="!(game$ | async) || !(game$ | async).state">
+  <mat-spinner class="center-spinner"></mat-spinner>
+</div>

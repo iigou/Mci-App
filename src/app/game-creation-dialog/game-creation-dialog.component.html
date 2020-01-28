@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Create a new {{data.game}} game</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Choose difficulty</mat-label>
+    <mat-select [(value)]="data.difficulty" >
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.difficulty" cdkFocusInitial>Ok</button>
+</div>
