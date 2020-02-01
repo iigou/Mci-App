@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,18 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
+import {MatRippleModule} from '@angular/material/core';
+import { AuthHeaderInterceptor } from './auth/auth-header.Interceptor';
+import { GameTitleComponent } from './game-title/game-title.component';
+import { GameCreationDialogComponent } from './game-creation-dialog/game-creation-dialog.component';
+import { AntonymComponent } from './antonym/antonym.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +35,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AntonymsComponent,
     FindTheSoundComponent,
     SetupComponent,
-    HomeComponent
+    HomeComponent,
+    GameTitleComponent,
+    GameCreationDialogComponent,
+    AntonymComponent
+  ],
+  entryComponents: [
+    AntonymsComponent,
+    GameCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +54,20 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatListModule,
+    MatRippleModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

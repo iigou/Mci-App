@@ -12,8 +12,6 @@ export class AuthService {
 
   private user: BehaviorSubject<IUser> = new BehaviorSubject({name: 'guest'});
 
-  public readonly user$: Observable<IUser> = this.user.asObservable();
-
   constructor() { }
 
   setup(userName: string) {

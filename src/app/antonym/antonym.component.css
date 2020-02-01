@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container>* {
+  width: 100%;
+  cursor: pointer;
+}
+
+.filler {
+  /* This fills the remaining space, by using flexbox. 
+         Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.instance-title {
+  
+  margin: -16px;
+  padding: 15px;
+}
+
+.instance-title.green {
+  background-color: green;
+  color: white;
+}
+
+i.icon-green {
+  color: green;
+}
+
+i.icon-red {
+  color: red;
+}

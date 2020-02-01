@@ -5,12 +5,18 @@ import { FindTheSoundComponent } from './findthesound/findthesound.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SetupComponent } from './setup/setup.component';
 import { HomeComponent } from './home/home.component';
+import { AntonymComponent } from './antonym/antonym.component';
 
 
 const routes: Routes = [
   {
     path: 'antonyms',
     component: AntonymsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'antonyms/:id',
+    component: AntonymComponent,
     canActivate: [AuthGuard]
   },
   {

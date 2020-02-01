@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { InfoService } from './info.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  games$: Observable<string[]>;
+
+  constructor(private router: Router, private infoSvc: InfoService) { }
 
   ngOnInit() {
+    this.games$ = this.infoSvc.getGames();
+  }
+
+  navigateTo(game: string) {
+    this.router.navigateByUrl(`/${game.toLowerCase()}`);
   }
 
 }

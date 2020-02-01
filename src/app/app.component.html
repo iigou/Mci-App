@@ -2,10 +2,8 @@
   <mat-toolbar color="primary">
     <div>{{title}} - Welcome <span *ngIf="(user$ | async).name">{{(user$ | async).name}}</span> </div>
     <span class="filler"></span>
-    <a routerLink="home"><mat-icon>home</mat-icon> Home</a>
-    <a routerLink="antonyms">Antonyms</a>
-    <a routerLink="findTheSound">Find the Sound</a>
   </mat-toolbar>
+  <app-game-title></app-game-title>
   <div class="main">
     <router-outlet></router-outlet>
   </div>
