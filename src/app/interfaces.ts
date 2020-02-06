@@ -38,8 +38,8 @@ export interface IAntonymGame {
 }
 
 export interface IFindTheSoundGame {
-    game: IGame;
-    solved: boolean;
+    game?: IGame;
+    solved?: boolean;
     images?: IMciImage[];
     soundId?: string;
     soundPath?: string;
