@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-accordion *ngIf="(games$ | async)">
+        <mat-expansion-panel *ngFor="let instance of (games$ | async).data">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span [ngSwitch]="instance.solved">
+                        <i class="material-icons" *ngSwitchCase="true">done</i>
+                        <i class="material-icons" *ngSwitchCase="false">more_horiz</i>
+                    </span>
+                    <span style="padding-left: 20px;">{{instance.game.level}} - {{instance.game.difficulty}}</span>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+                Completion Time: {{instance.game.completionTime | date:'mm:ss'}}
+            </div>
+            <div>
+                Completed Date: {{instance.game.completedDate | date:'medium'}}
+            </div>
+            <div>
+                Max Completion Time: {{instance.game.maxCompletionTime | date:'mm:ss'}}
+            </div>
+            <mat-action-row>
+                <button mat-button (click)="solve(instance)">Solve</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>
+
+<div class="overlay" *ngIf="!(games$ | async) || !(games$ | async).state">
+    <mat-spinner class="center-spinner"></mat-spinner>
+</div>

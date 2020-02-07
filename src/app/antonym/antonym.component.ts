@@ -13,12 +13,15 @@ import { GameTitleService } from '../game-title/game-title.service';
 })
 export class AntonymComponent implements OnInit {
 
-  game$: Observable<IState<IAntonymGame>>
-  constructor(private svc: AntonymsService, private gameTitleSvc: GameTitleService, private router:Router, private route: ActivatedRoute) { }
+  game$: Observable<IState<IAntonymGame>>;
+  constructor(private svc: AntonymsService,
+              private gameTitleSvc: GameTitleService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     const title = {
-      title: "Antonyms",
+      title: 'Antonyms',
       titleActions: [
         {
           action: this.goBack.bind(this),
@@ -27,15 +30,15 @@ export class AntonymComponent implements OnInit {
       ]
     };
     this.gameTitleSvc.setTitle(title);
-    this.route.params.subscribe( params => this.game$ = this.svc.getGame(params["id"]));
+    this.route.params.subscribe( params => this.game$ = this.svc.getGame(params.id));
   }
 
-  answer(id:string, choice: string) {
+  answer(id: string, choice: string) {
     this.svc.solveGame(id, 18000, choice);
   }
 
   goBack() {
-    this.router.navigateByUrl("/antonyms")
+    this.router.navigateByUrl('/antonyms');
   }
 
   goToNext(difficulty: string) {
